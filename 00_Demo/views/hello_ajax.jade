@@ -1,0 +1,33 @@
+//
+   Created by oukagaku on 15/5/18.
+extends layout_boot_div
+block content
+   h1= title
+   p Welcome to #{title}
+
+   script(type='text/javascript').
+      $.ajax({
+         type: "get",//使用get方法访问后台
+         dataType: "json",//返回json格式的数据
+         url: "/hello_ajax/getData",//要访问的后台地址
+         success: function(msg) {//msg为返回的数据，在这里做数据绑定
+            $.each(msg, function (index, item) {
+               alert(item.id + "－哈哈－" + item.name);
+            })
+         }
+      })
+
+      //循环执行，每隔3秒钟执行一次showalert（）
+      window.setInterval(showalert, 3000);
+      function showalert(){
+         $.ajax({
+            type: "get",//使用get方法访问后台
+            dataType: "json",//返回json格式的数据
+            url: "/hello_ajax/getData",//要访问的后台地址
+            success: function(msg) {//msg为返回的数据，在这里做数据绑定
+               $.each(msg, function (index, item) {
+                  alert(item.id + "－－" + item.name);
+               })
+            }
+         })
+      }

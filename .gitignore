@@ -1,0 +1,5 @@
+#ignore the root node_modules file and subdir /node_modules
+**/node_modules/
+
+#ignore the root ./idea
+/.idea/
